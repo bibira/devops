@@ -10,3 +10,5 @@ patches:
         path: /spec/project
         value: admin
 namePrefix: admin-
+commonLabels:
+  variant: admin
