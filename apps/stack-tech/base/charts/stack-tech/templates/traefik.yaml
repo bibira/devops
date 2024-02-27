@@ -14,7 +14,7 @@ spec:
     targetRevision: develop
     path: k3s/certificats
     directory:
-      include: {{ .Values.spec.project }}-gca-tls.yaml
+      include: gca-tls.yaml
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: kube-system
