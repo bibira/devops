@@ -2,7 +2,7 @@
   "appName": "stack-tech",
   "userGivenName": "stack-tech",
   "destNamespace": "azure-pool1",
-  "destServer": "https://kubernetes.default.svc",
+  "destServer": "https://4.233.109.21:6443",
   "srcPath": "apps/stack-tech/overlays/azure-pool1",
   "srcRepoURL": "https://github.com/devopsgca/argocd.git",
   "srcTargetRevision": "",
