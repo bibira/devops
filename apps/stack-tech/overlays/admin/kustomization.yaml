@@ -9,3 +9,4 @@ patches:
       - op: replace
         path: /spec/project
         value: admin
+namePrefix: admin-
