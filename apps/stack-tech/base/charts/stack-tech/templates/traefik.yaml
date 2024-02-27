@@ -72,7 +72,7 @@ spec:
         tlsStore:
           default:
             defaultCertificate:
-              secretName: {{ .Values.spec.project }}-gca-tls
+              secretName: gca-tls
         tracing:
           zipkin:
             httpEndpoint: http://opentelemetry-collector.opentelemetry:9411/api/v2/spans
