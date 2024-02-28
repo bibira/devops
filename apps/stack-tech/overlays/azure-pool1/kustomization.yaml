@@ -15,3 +15,6 @@ helmCharts:
         project: azure-pool1
         destination:
           server: https://4.233.109.21:6443
+      prom2teams:
+        connectors: 
+        - teams : "https://charlesandre.webhook.office.com/webhookb3"
