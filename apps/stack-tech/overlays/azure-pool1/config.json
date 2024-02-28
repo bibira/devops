@@ -1,7 +1,7 @@
 {
   "appName": "stack-tech",
   "userGivenName": "stack-tech",
-  "destNamespace": "azurepool1",
+  "destNamespace": "default",
   "destServer": "https://4.233.109.21:6443",
   "srcPath": "apps/stack-tech/overlays/admin",
   "srcRepoURL": "https://github.com/devopsgca/argocd.git",
