@@ -2,3 +2,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   project: default
+k8s:
+  flavor: rke2
+storageClass:
+  name: longhorn
