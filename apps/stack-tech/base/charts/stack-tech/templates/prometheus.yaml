@@ -121,6 +121,16 @@ spec:
                 orgId: "1"
                 type: file
                 updateIntervalSeconds: 10
+          ingress:
+            annotations: {}
+            enabled: true
+            extraPaths: []
+            hosts:
+            - grafana.gcatrans.com
+            labels: {}
+            path: /
+            pathType: Prefix
+            tls: []
         prometheus:
           retention: 1d
           prometheusSpec:
