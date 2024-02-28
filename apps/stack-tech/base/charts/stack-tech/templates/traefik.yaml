@@ -16,7 +16,7 @@ spec:
     directory:
       include: gca-tls.yaml
   destination:
-    server: {{ .Values.spec.destination.server }}
+ #   server: {{ .Values.spec.destination.server }}
     namespace: kube-system
   syncPolicy:
     automated:
@@ -77,7 +77,7 @@ spec:
           zipkin:
             httpEndpoint: http://opentelemetry-collector.opentelemetry:9411/api/v2/spans
   destination:
-    server: {{ .Values.spec.destination.server }}
+#    server: {{ .Values.spec.destination.server }}
     namespace: kube-system
   syncPolicy:
     automated:
