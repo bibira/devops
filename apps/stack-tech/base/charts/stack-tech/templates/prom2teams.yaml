@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-msteams
+  namespace: prometheus
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://prometheus-msteams.github.io/prometheus-msteams/
+    targetRevision: '*'
+    chart: prometheus-msteams
+    {{- with .Values.prom2teams }}
+    valuesObject: 
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: prometheus
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
