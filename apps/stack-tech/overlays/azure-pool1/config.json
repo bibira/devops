@@ -1,7 +1,7 @@
 {
   "appName": "stack-tech",
   "userGivenName": "stack-tech",
-  "destNamespace": "default",
+  "destNamespace": "azurepool",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/stack-tech/overlays/admin",
   "srcRepoURL": "https://github.com/devopsgca/argocd.git",
