@@ -13,7 +13,7 @@ spec:
     chart: prometheus-msteams
     valuesObject: 
       connectors: 
-        - teams : "https://charlesandre.webhook.office.com/webhookb2/5c49e775-13d2-4f6d-80b5-ba3f1651ebaf@38e68108-2383-4d82-a4b3-ac423a5e6218/IncomingWebhook/8c89ebe05dff443391f7c465b1ed1dee/dfd76bdb-37d4-4c4c-b907-6ea781954db5"{{- toYaml . | nindent 6 }}
+        - teams : "https://charlesandre.webhook.office.com/webhookb2/5c49e775-13d2-4f6d-80b5-ba3f1651ebaf@38e68108-2383-4d82-a4b3-ac423a5e6218/IncomingWebhook/8c89ebe05dff443391f7c465b1ed1dee/dfd76bdb-37d4-4c4c-b907-6ea781954db5
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: prometheus
