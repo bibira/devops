@@ -116,16 +116,16 @@ spec:
               dashboardproviders.yaml:
                 apiVersion: 1
                 providers:
-                - allowUiUpdates: true
-                  disableDeletion: false
-                  editable: true
-                  folder: provisionned
-                  name: provisionned
-                  options:
-                    path: /tmp/dashboards/provisionned
-                  orgId: "1"
-                  type: file
-                  updateIntervalSeconds: 10
+                  - allowUiUpdates: true
+                    disableDeletion: false
+                    editable: true
+                    folder: provisionned
+                    name: provisionned
+                    options:
+                      path: /tmp/dashboards/provisionned
+                    orgId: "1"
+                    type: file
+                    updateIntervalSeconds: 10
             ingress:
               annotations: {}
               enabled: true
