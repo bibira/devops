@@ -30,3 +30,14 @@ loki:
       size: 3Gi
   limits_config:
     retention_period: 24h
+tempo:
+  enabled: false
+  persistence:
+    size: 3Gi
+  retention: 24h
+  receivers:
+    otlp:
+      protocols:
+        http:
+          cors:
+            allowed_origins: [http://*.gcatrans.com, http://*.gcatrans.com:4200, https://*.gcatrans.com']

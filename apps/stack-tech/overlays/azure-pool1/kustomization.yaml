@@ -22,3 +22,5 @@ helmCharts:
         enabled: true
       loki:
         enabled: true
+      tempo:
+        enabled: true
