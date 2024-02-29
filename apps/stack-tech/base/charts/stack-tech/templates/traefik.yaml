@@ -78,6 +78,8 @@ spec:
             httpEndpoint: http://opentelemetry-collector.opentelemetry:9411/api/v2/spans
         metrics:
           prometheus:
+            service:
+              enabled: true
             serviceMonitor: {}
             disableAPICheck: false
   destination:
