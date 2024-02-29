@@ -66,7 +66,7 @@ spec:
           extraVolumeMounts:
             - mountPath: /var/loki/rules/fake
               name: rules
-            extraVolumes:
+          extraVolumes:
             - configMap:
                 name: loki-alerting-rules
               name: rules
