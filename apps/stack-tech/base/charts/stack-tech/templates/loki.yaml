@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki-cm
+  name: {{ include "stack-tech.fullname" . }}-loki-cm
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -28,7 +28,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki
+  name: {{ include "stack-tech.fullname" . }}-loki
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -106,7 +106,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: promtail
+  name: {{ include "stack-tech.fullname" . }}-promtail
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "3"
@@ -123,7 +123,7 @@ spec:
       valuesObject:
         config:
           clients:
-            - url: http://loki-gateway:3200/loki/api/v1/push
+            - url: http://loki-gateway:3100/loki/api/v1/push
           snippets:
             extraRelabelConfigs:
               - action: replace
