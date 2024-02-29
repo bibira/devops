@@ -20,3 +20,5 @@ helmCharts:
         - teams : "https://charlesandre.webhook.office.com/webhookb3"
       kubePrometheusStack:
         enabled: true
+      loki:
+        enabled: true

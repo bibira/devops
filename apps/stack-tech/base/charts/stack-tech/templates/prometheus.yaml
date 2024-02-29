@@ -14,8 +14,6 @@ spec:
     - repoURL: https://dev.azure.com/gca-trans/Devops/_git/Devops
       targetRevision: develop
       path: grafana_dashboard
-      directory:
-        include: dashboard-traefik.yaml
     - repoURL: https://prometheus-community.github.io/helm-charts
       targetRevision: '*'
       chart: kube-prometheus-stack

@@ -23,3 +23,10 @@ kubePrometheusStack:
     config:
       global:
         smtp_from: "Azure@gcatrans.com"
+loki:
+  enabled: false
+  singleBinary:
+    persistence:
+      size: 3Gi
+  limits_config:
+    retention_period: 24h

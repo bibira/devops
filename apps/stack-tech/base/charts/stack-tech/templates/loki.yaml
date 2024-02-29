@@ -1,0 +1,149 @@
+{{- if .Values.loki.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki-cm
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  sources:
+    - repoURL: https://dev.azure.com/gca-trans/Devops/_git/Devops
+      targetRevision: develop
+      path: loki
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: loki
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: '*'
+    chart: loki
+    helm:
+      releaseName: loki
+      valuesObject:
+        gateway:
+          service:
+            port: 3100
+        {{- if eq .Values.k8s.flavor "rke2" }}
+        global:
+          clusterDomain: cluster.local
+          dnsNamespace: kube-system
+          dnsService: rke2-coredns-rke2-coredns
+        {{- end }}
+        loki:
+          auth_enabled: false
+          commonConfig:
+            replication_factor: 1
+          compactor:
+            retention_enabled: true
+            shared_store: filesystem
+          limits_config:
+            retention_period: {{ .Values.loki.limits_config.retention_period }}
+          storage:
+            type: filesystem
+          extraVolumeMounts:
+            - mountPath: /var/loki/rules/fake
+              name: rules
+            extraVolumes:
+            - configMap:
+                name: loki-alerting-rules
+              name: rules
+          rulerConfig:
+            alertmanager_url: http://alertmanager-operated.prometheus:9093
+            storage:
+              local:
+                directory: /var/loki/rules
+              type: local
+        monitoring:
+          dashboards:
+            enabled: false
+          lokiCanary:
+            enabled: false
+          selfMonitoring:
+            enabled: false
+            grafanaAgent:
+              installOperator: false
+        singleBinary:
+          extraVolumeMounts:
+            - mountPath: /var/loki/rules/fake
+              name: rules
+            extraVolumes:
+            - configMap:
+                name: loki-alerting-rules
+              name: rules
+          persistence:
+            enableStatefulSetAutoDeletePVC: false
+            size: {{ .Values.loki.singleBinary.persistence.size }}
+          replicas: 1
+        test:
+          enabled: false
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: loki
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: promtail
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: '*'
+    chart: promtail
+    helm:
+      releaseName: promtail
+      valuesObject:
+        config:
+          clients:
+            - url: http://loki-gateway:3200/loki/api/v1/push
+          snippets:
+            extraRelabelConfigs:
+              - action: replace
+                source_labels:
+                  - __meta_kubernetes_pod_annotation_exporter
+                target_label: exporter
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: loki
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true
+{{- end }}
