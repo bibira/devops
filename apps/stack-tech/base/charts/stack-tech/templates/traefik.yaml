@@ -76,6 +76,10 @@ spec:
         tracing:
           zipkin:
             httpEndpoint: http://opentelemetry-collector.opentelemetry:9411/api/v2/spans
+        metrics:
+          prometheus:
+            serviceMonitor: {}
+            disableAPICheck: true
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: kube-system
