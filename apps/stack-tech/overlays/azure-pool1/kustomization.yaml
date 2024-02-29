@@ -24,3 +24,5 @@ helmCharts:
         enabled: true
       tempo:
         enabled: true
+      opentelemetry:
+        enabled: true

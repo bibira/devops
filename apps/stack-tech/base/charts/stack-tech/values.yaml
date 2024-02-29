@@ -35,9 +35,14 @@ tempo:
   persistence:
     size: 3Gi
   retention: 24h
-  receivers:
-    otlp:
-      protocols:
-        http:
-          cors:
-            allowed_origins: [http://*.gcatrans.com, http://*.gcatrans.com:4200, https://*.gcatrans.com']
+opentelemetry:
+  enabled: false
+  operator:
+    enabled: false
+  config:
+    receivers:
+      otlp:
+        protocols:
+          http:
+            cors:
+              allowed_origins: [http://*.gcatrans.com, http://*.gcatrans.com:4200, https://*.gcatrans.com']

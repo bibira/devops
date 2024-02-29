@@ -26,14 +26,6 @@ spec:
             remoteWriteUrl: http://kube-prometheus-stack-prometheus.prometheus:9090/api/v1/write
           receivers:
             jaeger: null
-            otlp:
-              protocols:
-                http:
-                  cors:
-                    allowed_origins: 
-                      {{- with .Values.tempo.receivers.otlp.protocols.http.cors.allowed_origins }}
-                      {{- toYaml . | nindent 22 }}
-                      {{- end }}
             zipkin: null
           retention: {{ .Values.tempo.retention }}
   destination:
