@@ -52,7 +52,7 @@ spec:
                 type: loki
                 uid: loki
                 access: proxy
-                url: http://loki-gateway.loki:3200
+                url: http://loki-gateway.loki:3100
                 editable: true
                 jsonData:
                   derivedFields:
