@@ -79,7 +79,7 @@ spec:
         metrics:
           prometheus:
             serviceMonitor: {}
-            disableAPICheck: true
+            disableAPICheck: false
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: kube-system
