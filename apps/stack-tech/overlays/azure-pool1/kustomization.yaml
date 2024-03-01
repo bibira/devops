@@ -29,6 +29,7 @@ helmCharts:
 patches:
   - target:
       kind: Application
+      name: .*traefik 
     patch: |-
       - op: replace
         path: /spec/syncPolicy
