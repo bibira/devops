@@ -5,7 +5,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-otel-collector
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "60"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -92,7 +92,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "61"
 spec:
   project: {{ .Values.spec.project }}
   source:
@@ -126,7 +126,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-go
   namespace: opentelemetry
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "62"
 spec:
   exporter:
     endpoint: http://opentelemetry-collector.opentelemetry:4318
@@ -154,7 +154,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-java
   namespace: opentelemetry
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "63"
 spec:
   exporter:
     endpoint: http://opentelemetry-collector.opentelemetry:4317
@@ -182,7 +182,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-python
   namespace: opentelemetry
   annotations:
-    argocd.argoproj.io/sync-wave: "30"
+    argocd.argoproj.io/sync-wave: "64"
 spec:
   exporter:
     endpoint: http://opentelemetry-collector.opentelemetry:4318

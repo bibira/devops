@@ -92,7 +92,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-traefik-metrics
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "15"
+    argocd.argoproj.io/sync-wave: "25"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
