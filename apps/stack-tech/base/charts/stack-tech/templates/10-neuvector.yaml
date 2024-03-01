@@ -26,7 +26,7 @@ spec:
             enabled: true
             host: {{ .Values.neuvector.manager.ingress.host }} 
           svc:
-            type: LoadBalancer
+            type: ClusterIP
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: cattle-neuvector-system
