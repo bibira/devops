@@ -26,3 +26,10 @@ helmCharts:
         enabled: true
       opentelemetry:
         enabled: true
+patches:
+  - target:
+      kind: Application
+    patch: |-
+      - op: replace
+        path: /spec/syncPolicy
+        value:         
