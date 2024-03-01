@@ -21,13 +21,12 @@ spec:
         releaseName: kube-prometheus-stack
         valuesObject:
           alertmanager:
-            config:
-              global:
-                smtp_smarthost: localsmtp.gcatrans.com:25
-                smtp_require_tls: false
-                smtp_from: {{ .Values.kubePrometheusStack.alertmanager.config.global.smtp_from }}
-            alertmanagerSpec:
-              config: 
+            alertmanagerSpec:          
+              config:
+                global:
+                  smtp_smarthost: localsmtp.gcatrans.com:25
+                  smtp_require_tls: false
+                  smtp_from: {{ .Values.kubePrometheusStack.alertmanager.config.global.smtp_from }}
                 receivers:
                 - name: teams
                   webhook_configs:
