@@ -26,6 +26,8 @@ helmCharts:
         enabled: true
       opentelemetry:
         enabled: true
+      neuvector:
+        enabled: true
 # patches:
 #   - target:
 #       kind: Application

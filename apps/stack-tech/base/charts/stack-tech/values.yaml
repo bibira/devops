@@ -48,5 +48,13 @@ opentelemetry:
               allowed_origins: [http://*.gcatrans.com, http://*.gcatrans.com:4200, https://*.gcatrans.com']
 certManager:
   enabled: true
+neuvector:
+  enabled: false
+  controller:
+    pvc:
+      storageClass: longhorn
+  manager:
+    ingress:
+      host: neuvector.gcatrans.com
 
               
