@@ -76,12 +76,6 @@ spec:
         tracing:
           zipkin:
             httpEndpoint: http://opentelemetry-collector.opentelemetry:9411/api/v2/spans
-        metrics:
-          prometheus:
-            service:
-              enabled: true
-            serviceMonitor: {}
-            disableAPICheck: false
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: kube-system
@@ -92,3 +86,31 @@ spec:
     syncOptions:
       - PruneLast=true
 ---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ include "stack-tech.fullname" . }}-traefik-metrics
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://dev.azure.com/gca-trans/Devops/_git/Devops
+    targetRevision: develop
+    path: traefik-metrics
+    directory:
+      include: traefik-metrics.yaml
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true
+---
+
