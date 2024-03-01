@@ -5,7 +5,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-loki-cm
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "40"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -31,7 +31,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-loki
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "41"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -109,7 +109,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-promtail
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "42"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:

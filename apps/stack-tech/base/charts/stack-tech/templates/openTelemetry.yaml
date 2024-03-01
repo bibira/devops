@@ -182,7 +182,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-python
   namespace: opentelemetry
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-wave: "30"
 spec:
   exporter:
     endpoint: http://opentelemetry-collector.opentelemetry:4318
