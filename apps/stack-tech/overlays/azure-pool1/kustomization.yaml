@@ -32,4 +32,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/syncPolicy
-        value:         
+        value: {}         
