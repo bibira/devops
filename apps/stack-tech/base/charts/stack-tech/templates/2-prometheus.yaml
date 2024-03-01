@@ -26,24 +26,25 @@ spec:
                 smtp_smarthost: localsmtp.gcatrans.com:25
                 smtp_require_tls: false
                 smtp_from: {{ .Values.kubePrometheusStack.alertmanager.config.global.smtp_from }}
-            alertmanagerSpec: 
-              receivers:
-              - name: teams
-                webhook_configs:
-                - send_resolved: true
-                  url: http://prometheus-msteams.prometheus:2000/teams
-              route:
-                group_by:
-                - namespace
-                - teams
-                group_interval: 5m
-                group_wait: 30s
-                receiver: teams
-                repeat_interval: 1h
-                routes:
-                - matchers:
-                  - alertname = "InfoInhibitor|Watchdog"
+            alertmanagerSpec:
+              config: 
+                receivers:
+                - name: teams
+                  webhook_configs:
+                  - send_resolved: true
+                    url: http://prometheus-msteams.prometheus:2000/teams
+                route:
+                  group_by:
+                  - namespace
+                  - teams
+                  group_interval: 5m
+                  group_wait: 30s
                   receiver: teams
+                  repeat_interval: 1h
+                  routes:
+                  - matchers:
+                    - alertname = "InfoInhibitor|Watchdog"
+                    receiver: teams
           grafana:
             adminPassword: prom-operator
             adminUser: admin

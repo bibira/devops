@@ -4,7 +4,7 @@ metadata:
   name: {{ include "stack-tech.fullname" . }}-prom2teams
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "30"
 spec:
   project: {{ .Values.spec.project }}
   source:
