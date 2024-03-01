@@ -46,5 +46,7 @@ opentelemetry:
           http:
             cors:
               allowed_origins: [http://*.gcatrans.com, http://*.gcatrans.com:4200, https://*.gcatrans.com']
+certManager:
+  enabled: true
 
               
