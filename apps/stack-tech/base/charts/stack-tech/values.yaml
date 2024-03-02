@@ -62,8 +62,8 @@ bringmycar:
 nfsclient:
   enabled: false
   nfs:
-    path: '/mnt/logauto'
-    server: '4.233.109.21'
+    path: /mnt/logauto
+    server: 4.233.109.21
   storageClass:
     accessModes : ReadWriteOnce
     defaultClass: true
