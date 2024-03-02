@@ -52,13 +52,13 @@ spec:
     helm:
       releaseName: nfsclient
       nfs:
-        path: {{ .Values.nfs.path }} #/mnt/logauto
-        server: {{ .Values.nfs.server }} #20.19.81.252
+        path: {{ .Values.nfsclient.nfs.path }} #/mnt/logauto
+        server: {{ .Values.nfsclient.nfs.server }} #20.19.81.252
       storageClass:
-        accessModes: {{ .Values.storageClass.accessModes }} #ReadWriteOnce
+        accessModes: {{ .Values.nfsclient.storageClass.accessModes }} #ReadWriteOnce
         allowVolumeExpansion: true
         archiveOnDelete: true
-        defaultClass: {{ .Values.storageClass.defaultClass }} #false
+        defaultClass: {{ .Values.nfsclient.storageClass.defaultClass }} #false
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: nfs-provisioner
