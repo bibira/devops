@@ -67,7 +67,7 @@ spec:
     namespace: nfs-provisioner
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
