@@ -53,7 +53,7 @@ neuvector:
   enabled: false
   controller:
     pvc:
-      storageClass: longhorn
+      storageClass: nfs-client
   manager:
     ingress:
       host: neuvector.gcatrans.com
