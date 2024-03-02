@@ -16,6 +16,7 @@ kubePrometheusStack:
       storageSpec:
         volumeClaimTemplate:
           spec:
+            storageClassName: nfs-client         
             resources:
               requests:
                 storage: 3Gi

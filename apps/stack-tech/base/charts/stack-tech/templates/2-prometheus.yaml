@@ -145,6 +145,7 @@ spec:
               storageSpec:
                 volumeClaimTemplate:
                   spec:
+                    storageClassName: {{ .Values.kubePrometheusStack.prometheus.prometheusSpec.storageSpec.volumeClaimTemplate.spec.storageClassName }} 
                     accessModes:
                       - ReadWriteOnce
                     resources:
