@@ -6,7 +6,8 @@ commonLabels:
   variant: admin
 helmGlobals:
   chartHome: ../../base/charts
-
+longhorn:
+  enabled: true
 helmCharts:
   - name: stack-tech
     releaseName: stack-tech

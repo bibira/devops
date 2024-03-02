@@ -1,5 +1,5 @@
 {{- if eq .Values.k8s.flavor "rke2" }}
-{{- if eq .Values.storageClass.name "longhorn" -}}
+{{- if eq .Values.longhorn.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -26,6 +26,42 @@ spec:
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: longhorn-system
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
+{{- if .Values.nfsclient.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ include "stack-tech.fullname" . }}-nfsclient
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: '*'
+    chart: nfs-subdir-external-provisioner
+    helm:
+      releaseName: nfsclient
+      nfs:
+        path: {{ .Values.nfs.path }} #/mnt/logauto
+        server: {{ .Values.nfs.server }} #20.19.81.252
+      storageClass:
+        accessModes: {{ .Values.storageClass.accessModes }} #ReadWriteOnce
+        allowVolumeExpansion: true
+        archiveOnDelete: true
+        defaultClass: {{ .Values.storageClass.defaultClass }} #false
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: nfs-provisioner
   syncPolicy:
     automated:
       prune: false

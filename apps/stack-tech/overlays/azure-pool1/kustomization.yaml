@@ -30,6 +30,10 @@ helmCharts:
         enabled: true
       bringmycar:
         enabled: true
+      nfsclient:
+        enabled: true
+      longhorn:
+        enabled: true        
 # patches:
 #   - target:
 #       kind: Application
