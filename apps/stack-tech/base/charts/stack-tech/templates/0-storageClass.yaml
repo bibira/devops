@@ -33,6 +33,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
 {{- end }}
+---
 {{- if .Values.nfsclient.enabled -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
