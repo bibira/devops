@@ -27,7 +27,7 @@ helmCharts:
       opentelemetry:
         enabled: true
       neuvector:
-        enabled: true
+        enabled: false
       bringmycar:
         enabled: true
       nfsclient:
