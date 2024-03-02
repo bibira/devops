@@ -47,7 +47,7 @@ metadata:
 spec:
   project: {{ .Values.spec.project }}
   source:
-    repoURL: https://kubernetes-sigs.github.io
+    repoURL: https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
     targetRevision: '*'
     chart: nfs-subdir-external-provisioner
     helm:
