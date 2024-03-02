@@ -59,7 +59,8 @@ spec:
         accessModes: {{ .Values.nfsclient.storageClass.accessModes }} #ReadWriteOnce
         allowVolumeExpansion: true
         archiveOnDelete: true
-        defaultClass: {{ .Values.nfsclient.storageClass.defaultClass }} #false
+        defaultClass: {{ .Values.nfsclient.storageClass.defaultClass }} #false*
+        name: nfs-client
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: nfs-provisioner
