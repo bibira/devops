@@ -62,7 +62,7 @@ bringmycar:
 nfsclient:
   enabled: false
   nfs:
-    path: /mnt/logauto
+    path: /mnt/kubernetes
     server: 10.0.0.9
   storageClass:
     accessModes : ReadWriteOnce
