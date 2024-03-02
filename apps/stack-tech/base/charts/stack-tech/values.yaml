@@ -50,7 +50,7 @@ opentelemetry:
 certManager:
   enabled: true
 neuvector:
-  enabled: false
+  enabled: true
   controller:
     pvc:
       storageClass: nfs-client
