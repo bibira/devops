@@ -63,7 +63,7 @@ nfsclient:
   enabled: false
   nfs:
     path: /mnt/logauto
-    server: 4.233.109.21
+    server: 20.19.81.252
   storageClass:
     accessModes : ReadWriteOnce
     defaultClass: false
