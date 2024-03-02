@@ -56,5 +56,7 @@ neuvector:
   manager:
     ingress:
       host: neuvector.gcatrans.com
+bringmycar:
+  enabled: false     
 
               

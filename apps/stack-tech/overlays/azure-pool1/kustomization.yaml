@@ -28,6 +28,8 @@ helmCharts:
         enabled: true
       neuvector:
         enabled: true
+      bringmycar:
+        enabled: true
 # patches:
 #   - target:
 #       kind: Application

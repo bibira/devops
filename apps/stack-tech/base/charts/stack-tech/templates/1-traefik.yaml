@@ -113,4 +113,61 @@ spec:
     syncOptions:
       - PruneLast=true
 ---
+{{- if .Values.bringmycar.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ include "stack-tech.fullname" . }}-bringmycar-tls
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://dev.azure.com/gca-trans/Devops/_git/Devops
+    targetRevision: develop
+    path: k3s/certificats
+    directory:
+      include: bringmycar-tls.yaml
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true
+--- 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ include "stack-tech.fullname" . }}-bringmycar-tls
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://dev.azure.com/gca-trans/Devops/_git/Devops
+    targetRevision: develop
+    path: k3s/certificats
+    directory:
+      include: certificat-store.yaml
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true
+
+{{- end }}      
+
 
