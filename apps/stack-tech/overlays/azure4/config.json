@@ -4,7 +4,7 @@
   "destNamespace": "default",
   "destServer": "https://kubernetes.default.svc",
   "srcPath": "apps/stack-tech/overlays/azure4",
-  "srcRepoURL": "https://github.com/devopsgca/argocd.git",
+  "srcRepoURL": "https://github.com/devopsgca/prune",
   "srcTargetRevision": "",
   "labels": null,
   "annotations": null
