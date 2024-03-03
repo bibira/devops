@@ -63,7 +63,7 @@ bringmycar:
 nfsclient:
   enabled: false
   nfs:
-    path: /mnt/nfs
+    path: /home/nfs
     server: 10.0.0.13
   storageClass:
     accessModes : ReadWriteOnce
