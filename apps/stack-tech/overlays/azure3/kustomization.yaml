@@ -14,7 +14,7 @@ helmCharts:
       spec:
         project: azure-pool1
         destination:
-          server: https://4.233.109.21:6443
+          server: https://4.212.8.55:6443
       nfsclient:
         enabled: true          
       prom2teams:
