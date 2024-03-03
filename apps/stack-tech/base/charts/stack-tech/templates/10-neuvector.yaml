@@ -1,0 +1,40 @@
+{{- if .Values.neuvector.enabled -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ include "stack-tech.fullname" . }}-neuvector
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ .Values.spec.project }}
+  source:
+    repoURL: https://neuvector.github.io/neuvector-helm/
+    targetRevision: '*'
+    chart: core
+    helm:
+      releaseName: neuvector
+      valuesObject:
+        controller:
+          pvc:
+            enabled: true
+            storageClass: {{ .Values.neuvector.controller.pvc.storageClass }}
+        manager:
+          ingress:
+            enabled: true
+            host: {{ .Values.neuvector.manager.ingress.host }} 
+          svc:
+            type: ClusterIP
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: cattle-neuvector-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
+{{- end }}
