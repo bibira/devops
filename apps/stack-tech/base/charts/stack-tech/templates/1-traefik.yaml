@@ -69,12 +69,12 @@ spec:
           kubernetesIngress:
             publishedService:
               enabled: true
-       {{- if .Values.bringmycar.disabled -}}              
+ #     {{- if .Values.bringmycar.disabled -}}              
         tlsStore:
           default:
             defaultCertificate:
               secretName: gca-tls
-       {{- end }}                
+ #      {{- end }}                
         tracing:
           zipkin:
             httpEndpoint: http://opentelemetry-collector.opentelemetry:9411/api/v2/spans
