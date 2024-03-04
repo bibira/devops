@@ -1,0 +1,11 @@
+{
+  "appName": "stack-tech",
+  "userGivenName": "stack-tech",
+  "destNamespace": "default",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "apps/stack-tech/overlays/argocd",
+  "srcRepoURL": "https://github.com/devopsgca/argocd.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null
+}
