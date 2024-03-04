@@ -16,12 +16,27 @@ helmCharts:
         destination:
           server: https://4.212.8.55:6443
       nfsclient:
-        enabled: true          
+        enabled: true
+        nfs:
+          path: /mnt/docker-data/lavage
+          server: 10.10.1.86
+        storageClass:
+          accessModes : ReadWriteOnce
+          defaultClass: true                  
       prom2teams:
         connectors: 
         - teams : "https://charlesandre.webhook.office.com/webhookb2/5c49e775-13d2-4f6d-80b5-ba3f1651ebaf@38e68108-2383-4d82-a4b3-ac423a5e6218/IncomingWebhook/5a889d82fe924c85a06eb07ad958a94b/dfd76bdb-37d4-4c4c-b907-6ea781954db5"
       kubePrometheusStack:
         enabled: true
+        prometheus:
+          prometheusSpec:
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: nfs-client
+                    resources:
+                      requests:
+                        storage: 10Gi
       loki:
         enabled: true
       tempo:
