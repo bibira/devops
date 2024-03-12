@@ -1,0 +1,1 @@
+{"appName":"stack-tech","userGivenName":"stack-tech","destNamespace":"default","destServer":"https://kubernetes.default.svc","srcPath":"apps\\stack-tech\\overlays\\stack-tech","srcRepoURL":"https://github.com/bibira/devops.git","srcTargetRevision":"","labels":null}
